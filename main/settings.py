@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    # 'emlak',
+    'emlak',
 ]
 
 MIDDLEWARE = [
