@@ -1,0 +1,52 @@
+{% load static %}
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+
+
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img class="header_logo" src="{% static 'assets/images/logo/logo2.jpg' %}" alt="">
+                    </av>
+                    <!-- ***** Logo End ***** -->
+
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section">
+                            <li class="submenu">
+                                <a href="{% url 'home' %}" class="{% if '/' == request.path %} active {% endif %}">Anasayfa</a>
+                                {% if '/' == request.path %}
+                                <ul>
+                                    <li class="scroll-to-section"><a class="{% if '/#top' in request.path %} active {% endif %}" href="#top">Yukarı</a></li>
+                                    <li class="scroll-to-section"><a class="{% if '/#men' in request.path %} active {% endif %}" href="#men">Daireler</a></li>
+                                    <li class="scroll-to-section"><a class="{% if '/#women' in request.path %} active {% endif %}" href="#women">Arsalar</a></li>
+                                    <li class="scroll-to-section"><a class="{% if '/#kids' in request.path %} active {% endif %}" href="#kids">Kiralık</a></li>
+                                </ul>
+                                {% endif %}
+                            </li>
+                        </li>
+                        
+                        <li><a class="{% if 'products' in request.path %} active {% endif %}" href="{% url 'products' %}">Emlak</a></li>
+                        <li><a class="{% if 'about' in request.path %} active {% endif %}" href="{% url 'about' %}">Hakkımızda</a></li>
+                        <li><a class="{% if 'contact' in request.path %} active {% endif %}" href="{% url 'contact' %}">İletişim</a></li>
+                        
+                    </ul>
+
+
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+
+
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
