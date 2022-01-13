@@ -6,7 +6,8 @@ from .models import (
     EmlakKayit,
     EmlakKayitFoto,
 
-    MainSlider
+    MainSlider,
+    Message
 )
 
 # Register your models here.
@@ -25,6 +26,8 @@ admin.site.register(EmlakTipi)
 admin.site.register(OdaSayisi)
 admin.site.register(IsitmaDurumu)
 admin.site.register(EmlakKayit, EmlakKayitAdmin)
-# admin.site.register(EmlakKayitFoto)
+admin.site.register(EmlakKayitFoto)
 
 admin.site.register(MainSlider)
+
+admin.site.register(Message)
