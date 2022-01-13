@@ -1,18 +1,20 @@
 {% extends "base/_base.html"%}
 {% load static %}
+{% load humanize %}
+
 
 {% block content %}
 
 
 
 <!-- ***** Main Banner Area Start ***** -->
-<div class="page-heading" id="top">
+<div class="page-heading" id="top" style="background-image: url({{product.resim.url}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-content">
-                    <h2>Single Product Page</h2>
-                    <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                    <h2 class="product_header_desc">{{ product.baslik | upper }}</h2>
+                    <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                 </div>
             </div>
         </div>
@@ -24,6 +26,7 @@
 <!-- ***** Product Area Starts ***** -->
 <section class="section" id="product">
     <div class="container">
+
         <div class="row">
 
             <div class="col-lg-8">
@@ -34,10 +37,10 @@
                         <ol class="carousel-indicators mysliderinner">
                             {% for item in images %}
                             {% if forloop.first %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ item.id }}"
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ item.id | add:'-1'  }}"
                                 data-class="active"></li>
                             {% else %}
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ item.id }}"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ item.id | add:'-1'  }}"></li>
                             {% endif %}
                             {% endfor %}
                         </ol>
@@ -67,16 +70,15 @@
             </div>
 
             <div class="col-lg-4">
-
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
-                        <thead>
+                        <!-- <thead>
                             <tr>
                                 <td colspan="2">
                                     <h4>{{ product.baslik | upper }}</h4>
                                 </td>
                             </tr>
-                        </thead>
+                        </thead> -->
 
                         <tbody>
 
@@ -87,7 +89,7 @@
 
                             <tr>
                                 <td>fiyat</td>
-                                <td>{{ product.fiyat }} TL</td>
+                                <td>{{ product.fiyat | intcomma }} TL</td>
                             </tr>
 
                             <tr>
@@ -106,63 +108,64 @@
                                 <td>{{ product.emlak_tipi }}</td>
                             </tr>
 
+                            {% if product.oda_sayısı %}
                             <tr>
                                 <td>oda_sayısı</td>
                                 <td>{{ product.oda_sayısı }}</td>
                             </tr>
+                            {% endif %}
 
+                            {% if product.isitma_durumu %}
                             <tr>
                                 <td>isitma_durumu</td>
                                 <td>{{ product.isitma_durumu }}</td>
                             </tr>
+                            {% endif %}
 
+                            {% if age %}
                             <tr>
                                 <td>bina yaşı</td>
                                 <td>{{ age }}</td>
                             </tr>
+                            {% endif %}
 
+                            {% if product.bulundugu_kat %}
                             <tr>
                                 <td>bulundugu_kat</td>
                                 <td>{{ product.bulundugu_kat }}</td>
                             </tr>
+                            {% endif %}
 
+                            {% if product.imar_durumu %}
                             <tr>
+                                
                                 <td>imar_durumu</td>
                                 <td>{{ product.imar_durumu }}</td>
                             </tr>
+                            {% endif %}
 
 
                         </tbody>
                     </table>
                 </div>
-
-                <div class="right-content">
-                    <!-- <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul> -->
-
-                    <div class="quote d-flex">
-                        <i class="fa fa-quote-left"></i>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
-                        </p>
-                        <i class="fa fa-quote-right"></i>
-                    </div>
-
-                    <div class="total">
-                        <h4>Total: {{ product.fiyat }}TL</h4>
-                        <div class="main-border-button"><a href="#">İşaretle</a></div>
-                    </div>
-
-                </div>
-
             </div>
 
         </div>
+
+        <div class="row" id="product_description">
+            <div class="col">
+                <div class="quote d-flex">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 <!-- ***** Product Area Ends ***** -->
